@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="xandy.btcom"
+      android:versionCode="1"
+      android:versionName="1.0" > 
+      
+    <application 
+        android:icon="@drawable/icon" 
+        android:label="@string/app_name">
+        <activity 
+            android:name="xandy.btcom.Bluetooth"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+	    <activity android:name="xandy.btcom.ChatActivity" />
+		<activity android:name="xandy.btcom.DeviceActivity" />               
+	    
+		<!--<service android:name=".BTSocketService" />后台服务启动  -->
+		
+		<receiver android:name=".BluetoothAPStateReceiver" >
+		    <intent-filter>
+		        <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+		        <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED"/>
+		        <action android:name="com.xandy.btcom.socket.ACTION"/>
+		    </intent-filter>
+		</receiver>
+    </application>
+	
+    <uses-sdk android:minSdkVersion="8" />
+	<uses-permission android:name="android.permission.BLUETOOTH"/>
+	<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+	<uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+</manifest> 
